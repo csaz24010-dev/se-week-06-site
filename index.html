@@ -214,22 +214,6 @@
       max-width: 520px;
     }
 
-    .work-stack {
-      margin-top: 0.8rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .stack-item {
-      font-size: 0.72rem;
-      color: var(--mid);
-      letter-spacing: 0.04em;
-    }
-
-    .stack-item::after { content: '·'; margin-left: 0.4rem; }
-    .stack-item:last-child::after { content: ''; }
-
     /* ── Reflection ── */
     .reflection-item + .reflection-item {
       margin-top: 2rem;
@@ -292,15 +276,16 @@
 
   <!-- Hero -->
   <div class="hero">
-    <p class="hero-label">Portfolio · 2026</p>
-    <h1>Student</h1>
+    <p class="hero-label">自己紹介サイト · 2026</p>
+    <h1>Student 4010</h1>
     <p class="hero-sub">授業用の自己紹介サイトである</p>
   </div>
 
   <hr>
 
-  <!-- About -->
   <div class="container">
+
+    <!-- About -->
     <section id="about">
       <p class="section-label">About</p>
       <div class="about-text">
@@ -330,19 +315,17 @@
     <!-- Skills -->
     <section id="skills">
       <p class="section-label">Skills</p>
-        <div class="skill-tags">
-          <span class="tag">C</span>
-          <span class="tag">C++</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Python</span>
-        </div>
+      <div class="skill-tags">
+        <span class="tag">C</span>
+        <span class="tag">C++</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Python</span>
       </div>
     </section>
 
     <!-- Works -->
     <section id="works">
       <p class="section-label">Works</p>
-
       <div class="work">
         <div class="work-header">
           <h3 class="work-title">ヘビゲーム</h3>
@@ -355,11 +338,13 @@
     <!-- Reflection -->
     <section id="reflection">
       <p class="section-label">Reflection</p>
-
       <div class="reflection-item">
         <p class="reflection-q">これから伸ばしたいことは？</p>
         <p class="reflection-a">AIを用いた作品の作成や問題の本質を分解し、問題解決に必要なことを見抜く力である。</p>
       </div>
+    </section>
+
+  </div>
 
   <footer>
     <span>4010</span>

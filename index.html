@@ -1,7 +1,370 @@
-<!doctype html>
-<meta charset=
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #f7f6f3;
+      --ink: #1a1a1a;
+      --mid: #6b6b6b;
+      --light: #c8c8c8;
+      --accent: #2a5cff;
+      --font: Georgia, 'Times New Roman', serif;
+      --font-sans: 'Helvetica Neue', Helvetica, sans-serif;
+    }
 
-"utf-8">
-<title>自己紹介</title>
-<h1>自己紹介</h1>
-<p>授業で作成したページです。</p>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 1.6rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .nav-name {
+      font-family: var(--font);
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 6rem 2rem 5rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 0.78rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 440px;
+      line-height: 1.75;
+    }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--light);
+      margin: 0;
+    }
+
+    /* ── Section ── */
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--light);
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      color: var(--mid);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    /* ── About ── */
+    .about-text {
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.85;
+      max-width: 560px;
+    }
+
+    .about-text p + p { margin-top: 1rem; }
+
+    .about-meta {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--light);
+    }
+
+    .meta-item {}
+
+    .meta-key {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.15rem;
+    }
+
+    .meta-val {
+      font-size: 0.9rem;
+    }
+
+    /* ── Skills ── */
+    .skill-group + .skill-group {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--light);
+    }
+
+    .skill-group-name {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--light);
+      color: var(--ink);
+    }
+
+    /* ── Works ── */
+    .work + .work {
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--light);
+    }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+      gap: 1rem;
+    }
+
+    .work-title {
+      font-family: var(--font);
+      font-size: 1.15rem;
+      font-weight: 400;
+    }
+
+    .work-type {
+      font-size: 0.75rem;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .work-desc {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .work-stack {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .stack-item {
+      font-size: 0.72rem;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    .stack-item::after { content: '·'; margin-left: 0.4rem; }
+    .stack-item:last-child::after { content: ''; }
+
+    /* ── Reflection ── */
+    .reflection-item + .reflection-item {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--light);
+    }
+
+    .reflection-q {
+      font-family: var(--font);
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 0.6rem;
+    }
+
+    .reflection-a {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2.5rem 2rem;
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--mid);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 1.2rem 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { padding: 4rem 1.2rem 3rem; }
+      .container { padding: 0 1.2rem; }
+      .work-header { flex-direction: column; gap: 0.2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 420px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">4010</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#reflection">Reflection</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-label">Portfolio · 2026</p>
+    <h1>Student</h1>
+    <p class="hero-sub">授業用の自己紹介サイトである</p>
+  </div>
+
+  <hr>
+
+  <!-- About -->
+  <div class="container">
+    <section id="about">
+      <p class="section-label">About</p>
+      <div class="about-text">
+        <p>はじめまして。4010です。</p>
+        <p>現在、JavaScriptの復習をしています。</p>
+      </div>
+      <div class="about-meta">
+        <div class="meta-item">
+          <p class="meta-key">地域</p>
+          <p class="meta-val">日本</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-key">興味ある業界</p>
+          <p class="meta-val">通信業界</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-key">話せる言語</p>
+          <p class="meta-val">日本語 ・英語・アラビア語</p>
+        </div>
+        <div class="meta-item">
+          <p class="meta-key">職業</p>
+          <p class="meta-val">学生</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <p class="section-label">Skills</p>
+        <div class="skill-tags">
+          <span class="tag">C</span>
+          <span class="tag">C++</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section id="works">
+      <p class="section-label">Works</p>
+
+      <div class="work">
+        <div class="work-header">
+          <h3 class="work-title">ヘビゲーム</h3>
+          <span class="work-type">Game</span>
+        </div>
+        <p class="work-desc">簡単なヘビゲームをC++を用いて作成した。</p>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section id="reflection">
+      <p class="section-label">Reflection</p>
+
+      <div class="reflection-item">
+        <p class="reflection-q">これから伸ばしたいことは？</p>
+        <p class="reflection-a">AIを用いた作品の作成や問題の本質を分解し、問題解決に必要なことを見抜く力である。</p>
+      </div>
+
+  <footer>
+    <span>4010</span>
+    <span>© 2026</span>
+  </footer>
+
+</body>
+</html>
